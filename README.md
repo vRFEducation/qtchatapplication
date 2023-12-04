@@ -24,8 +24,10 @@
     <a href="https://github.com/vRFEducation/qtchatapplication"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/vRFEducation/qtchatapplication">View Demo</a>
+    <a href="https://youtu.be/3D3NLLFp8kk">View Demo(English)</a>
     ·
+    <a href="https://youtu.be/ShrOaILQaWM">View Demo(Persian)</a>
+    .
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Report Bug</a>
     ·
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Request Feature</a>
