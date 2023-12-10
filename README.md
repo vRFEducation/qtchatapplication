@@ -27,7 +27,11 @@
     <a href="https://youtu.be/3D3NLLFp8kk">View Demo(English)</a>
     ·
     <a href="https://youtu.be/ShrOaILQaWM">View Demo(Persian)</a>
-    .
+    <br>
+    <a href="https://youtu.be/kpyGQIuZBQE">View Demo 2(English)</a>
+    ·
+    <a href="https://youtu.be/tTLhiws0vGA">View Demo 2(Persian)</a>
+    <br>
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Report Bug</a>
     ·
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Request Feature</a>
@@ -68,6 +72,8 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]]
+[![Product Name Screen Shot][product-screenshot2]]
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -178,6 +184,7 @@ Project Link: [https://github.com/vRFEducation/qtchatapplication](https://github
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
+[product-screenshot2]: images/screenshot2.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

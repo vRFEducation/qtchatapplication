@@ -11,12 +11,14 @@ class ClientManager : public QObject
     Q_OBJECT
 public:
     explicit ClientManager(QHostAddress ip = QHostAddress::LocalHost, ushort port = 4500, QObject *parent = nullptr);
+    explicit ClientManager(QTcpSocket *client, QObject *parent = nullptr);
 
     void connectToServer();
 
     void sendMessage(QString message);
     void sendName(QString name);
     void sendStatus(ChatProtocol::Status status);
+    QString name() const;
 public:
     void sendIsTyping();
 
@@ -24,7 +26,7 @@ signals:
     void connected();
     void disconnected();
 //    void dataReceived(QByteArray data);
-    void textMessageReceived(QString message);
+    void textMessageReceived(const QString message);
     void isTyping();
     void nameChanged(QString name);
     void statusChanged(ChatProtocol::Status status);

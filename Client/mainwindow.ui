@@ -19,6 +19,41 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="lnClientName">
+        <property name="placeholderText">
+         <string>Enter Client Name</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmbStatus">
+        <item>
+         <property name="text">
+          <string>None</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Available</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Away</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Busy</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <widget class="QListWidget" name="lstMessages"/>
     </item>
     <item>

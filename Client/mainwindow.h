@@ -21,7 +21,13 @@ private slots:
 
     void on_btnSend_clicked();
 
-    void dataReceived(QByteArray data);
+    void dataReceived(QString message);
+
+    void on_lnClientName_editingFinished();
+
+    void on_cmbStatus_currentIndexChanged(int index);
+
+    void onTyping();
 
 private:
     Ui::MainWindow *ui;

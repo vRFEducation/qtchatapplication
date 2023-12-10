@@ -5,6 +5,14 @@ ClientManager::ClientManager(QHostAddress ip, ushort port, QObject *parent)
       _ip(ip),
       _port(port)
 {
+    _socket = new QTcpSocket(this);
+    setupClient();
+}
+
+ClientManager::ClientManager(QTcpSocket *client, QObject *parent)
+    : QObject{parent},
+    _socket(client)
+{
     setupClient();
 }
 
@@ -28,6 +36,14 @@ void ClientManager::sendStatus(ChatProtocol::Status status)
     _socket->write(_protocol.setStatusMessage(status));
 }
 
+QString ClientManager::name() const
+{
+    auto id = _socket->property("id").toInt();
+    auto name = _protocol.name().length() > 0 ? _protocol.name() : QString("Client (%1)").arg(id);
+
+    return name;
+}
+
 void ClientManager::sendIsTyping()
 {
     _socket->write(_protocol.isTypingMessage());
@@ -42,7 +58,7 @@ void ClientManager::readyRead()
         emit textMessageReceived(_protocol.message());
         break;
     case ChatProtocol::SetName:
-        emit nameChanged(_protocol.name());
+        emit nameChanged(name());
         break;
     case ChatProtocol::SetStatus:
         emit statusChanged(_protocol.status());
@@ -57,7 +73,6 @@ void ClientManager::readyRead()
 
 void ClientManager::setupClient()
 {
-    _socket = new QTcpSocket(this);
     connect(_socket, &QTcpSocket::connected, this, &ClientManager::connected);
     connect(_socket, &QTcpSocket::disconnected, this, &ClientManager::disconnected);
     connect(_socket, &QTcpSocket::readyRead, this, &ClientManager::readyRead);

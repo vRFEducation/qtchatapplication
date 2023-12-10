@@ -1,4 +1,3 @@
-#include "ClientChatWidget.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -22,6 +21,11 @@ void MainWindow::newClientConnected(QTcpSocket *client)
     auto chatWidget= new ClientChatWidget(client, ui->tbClientsChat);
     ui->tbClientsChat->addTab(chatWidget, QString("Client (%1)").arg(id));
 
+    connect(chatWidget, &ClientChatWidget::clientNameChanged, this, &MainWindow::setClientName);
+    connect(chatWidget, &ClientChatWidget::statusChanged, this, &MainWindow::setClientStatus);
+    connect(chatWidget, &ClientChatWidget::isTyping, [this](QString name){
+        this->statusBar()->showMessage(name, 750);
+    });
 
 }
 
@@ -29,6 +33,38 @@ void MainWindow::clientDisconnected(QTcpSocket *client)
 {
     auto id = client->property("id").toInt();
     ui->lstClients->addItem(QString("Client disconnected: %1").arg(id));
+}
+
+void MainWindow::setClientName(QString name)
+{
+    auto widget = qobject_cast<QWidget *>(sender());
+    auto index = ui->tbClientsChat->indexOf(widget);
+    ui->tbClientsChat->setTabText(index, name);
+}
+
+void MainWindow::setClientStatus(ChatProtocol::Status status)
+{
+    auto widget = qobject_cast<QWidget *>(sender());
+    auto index = ui->tbClientsChat->indexOf(widget);
+    QString iconName = ":/icons/";
+    switch (status) {
+    case ChatProtocol::Available:
+        iconName.append("available.png");
+        break;
+    case ChatProtocol::Away:
+        iconName.append("away.png");
+        break;
+    case ChatProtocol::Busy:
+        iconName.append("busy.png");
+        break;
+    default:
+        iconName = "";
+        break;
+
+    }
+
+    auto icon = QIcon(iconName);
+    ui->tbClientsChat->setTabIcon(index, icon);
 }
 
 void MainWindow::seupServer()
