@@ -1,7 +1,8 @@
 #include "ChatItemWidget.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QFileDialog>>
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -26,6 +27,8 @@ void MainWindow::on_actionConnect_triggered()
     });
     connect(_client, &ClientManager::textMessageReceived, this, &MainWindow::dataReceived);
     connect(_client, &ClientManager::isTyping, this, &MainWindow::onTyping);
+    connect(_client, &ClientManager::initReceivingFile, this, &MainWindow::onInitReceivingFile);
+    connect(_client, &ClientManager::rejectReceivingFile, this, &MainWindow::onRejectReceivingFile);
 
     connect(ui->lnMessage, &QLineEdit::textChanged, _client, &ClientManager::sendIsTyping);
     _client->connectToServer();
@@ -81,5 +84,31 @@ void MainWindow::on_cmbStatus_currentIndexChanged(int index)
 void MainWindow::onTyping()
 {
     statusBar()->showMessage("Server is typing...", 750);
+}
+
+
+void MainWindow::on_btnSendFile_clicked()
+{
+    auto fileName = QFileDialog::getOpenFileName(this, "Select a file", "/home");
+    _client->sendInitSendingFile(fileName);
+}
+
+void MainWindow::onRejectReceivingFile()
+{
+    QMessageBox::critical(this, "Sending File", "Operation rejected...");
+}
+
+void MainWindow::onInitReceivingFile(QString clientName, QString fileName, qint64 fileSize)
+{
+    auto message = QString("Client (%1) wants to send a file. Do you want to accept it?\nFile Name:%2\nFile Size: %3 bytes")
+            .arg(clientName, fileName)
+            .arg(fileSize);
+    auto result = QMessageBox::question(this, "Receiving File", message);
+    if (result == QMessageBox::Yes) {
+        _client->sendAcceptFile();
+    } else {
+        _client->sendRejectFile();
+    }
+
 }
 

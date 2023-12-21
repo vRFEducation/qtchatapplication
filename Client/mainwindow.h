@@ -29,6 +29,11 @@ private slots:
 
     void onTyping();
 
+    void on_btnSendFile_clicked();
+
+    void onRejectReceivingFile();
+
+    void onInitReceivingFile(QString clientName, QString fileName, qint64 fileSize);
 private:
     Ui::MainWindow *ui;
     ClientManager *_client;

@@ -1,14 +1,5 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -31,6 +22,10 @@
     <a href="https://youtu.be/kpyGQIuZBQE">View Demo 2(English)</a>
     ·
     <a href="https://youtu.be/tTLhiws0vGA">View Demo 2(Persian)</a>
+    <br>
+    <a href="https://youtu.be/xSUB0Q_SZS0">View Demo 3(English)</a>
+    ·
+    <a href="https://youtu.be/5qflW93cPSg">View Demo 3(Persian)</a>
     <br>
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Report Bug</a>
     ·

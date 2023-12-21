@@ -15,3 +15,8 @@
     - Send Client Name
     - Send IsTyping Message
     
+    
+## v3.0.0
+
+### Added or Changed
+    - Send file from client to server
