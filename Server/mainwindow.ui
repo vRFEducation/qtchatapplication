@@ -22,7 +22,11 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QTabWidget" name="tbClientsChat"/>
+        <widget class="QTabWidget" name="tbClientsChat">
+         <property name="tabsClosable">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

@@ -24,6 +24,11 @@ ClientChatWidget::ClientChatWidget(QTcpSocket *client, QWidget *parent) :
     dir.setPath("./" + _client->name());
 }
 
+void ClientChatWidget::disconnect()
+{
+    _client->disconnectFromHost();
+}
+
 ClientChatWidget::~ClientChatWidget()
 {
     delete ui;
@@ -42,9 +47,14 @@ void ClientChatWidget::on_btnSend_clicked()
     ui->lstMessages->addItem(message);
 }
 
-void ClientChatWidget::textMessageReceived(QString message)
+void ClientChatWidget::textMessageReceived(QString message, QString receiver)
 {
-    ui->lstMessages->addItem(message);
+    if (receiver == "Server" || receiver == "All") {
+        ui->lstMessages->addItem(message);
+    }
+    if(receiver != "Server"){
+        emit textForOtherClients(message, receiver, _client->name());
+    }
 }
 
 void ClientChatWidget::onTyping()
@@ -78,9 +88,9 @@ void ClientChatWidget::on_lblOpenFolder_linkActivated(const QString &link)
     QDesktopServices::openUrl(QUrl::fromLocalFile(_client->name()));
 }
 
-void ClientChatWidget::onClientNameChanged(QString name)
+void ClientChatWidget::onClientNameChanged(QString prevName, QString name)
 {
     QFile::rename(dir.canonicalPath(), name);
-    emit clientNameChanged(name);
+    emit clientNameChanged(prevName, name);
 }
 

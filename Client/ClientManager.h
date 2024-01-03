@@ -14,7 +14,7 @@ public:
 
     void connectToServer();
 
-    void sendMessage(QString message);
+    void sendMessage(QString message, QString receiver);
     void sendName(QString name);
     void sendStatus(ChatProtocol::Status status);
     void sendIsTyping();
@@ -33,6 +33,11 @@ signals:
     void statusChanged(ChatProtocol::Status status);
     void rejectReceivingFile();
     void initReceivingFile(QString clientName, QString fileName, qint64 fileSize);
+
+    void connectionACK(QString myName, QStringList clientsName);
+    void newClientConnectedToServer(QString clienName);
+    void clientNameChanged(QString prevName, QString clientName);
+    void clientDisconnected(QString clientName);
 
 private slots:
     void readyRead();

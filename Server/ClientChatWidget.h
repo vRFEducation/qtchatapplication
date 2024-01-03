@@ -17,6 +17,7 @@ class ClientChatWidget : public QWidget
 
 public:
     explicit ClientChatWidget(QTcpSocket *cleint, QWidget *parent = nullptr);
+    void disconnect();
     ~ClientChatWidget();
 private slots:
 
@@ -24,7 +25,7 @@ private slots:
 
     void on_btnSend_clicked();
 
-    void textMessageReceived(QString message);
+    void textMessageReceived(QString message, QString receiver);
     void onTyping();
 
 
@@ -34,12 +35,12 @@ private slots:
 
     void on_lblOpenFolder_linkActivated(const QString &link);
 
-    void onClientNameChanged(QString name);
+    void onClientNameChanged(QString prevName, QString name);
 signals:
-    void clientNameChanged(QString name);
+    void clientNameChanged(QString prevName, QString name);
     void isTyping(QString message);
     void statusChanged(ChatProtocol::Status status);
-
+    void textForOtherClients(QString message, QString receiver, QString sender);
 private:
     Ui::ClientChatWidget *ui;
     ClientManager *_client;

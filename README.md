@@ -27,6 +27,11 @@
     ·
     <a href="https://youtu.be/5qflW93cPSg">View Demo 3(Persian)</a>
     <br>
+    <a href="https://youtu.be/SWzjYbNVAnE">View Demo 4(English)</a>
+    ·
+    <a href="https://youtu.be/gNufeLakItA">View Demo 4(Persian)</a>
+        <br>
+
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Report Bug</a>
     ·
     <a href="https://github.com/vRFEducation/qtchatapplication/issues">Request Feature</a>

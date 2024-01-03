@@ -20,3 +20,10 @@
 
 ### Added or Changed
     - Send file from client to server
+
+        
+## v4.0.0
+
+### Added or Changed
+    - send to all text message
+    - send message to individual client

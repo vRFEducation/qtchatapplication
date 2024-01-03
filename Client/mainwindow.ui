@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>476</width>
-    <height>318</height>
+    <width>363</width>
+    <height>296</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,25 +57,25 @@
      <widget class="QListWidget" name="lstMessages"/>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Message:</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1" colspan="2">
        <widget class="QLineEdit" name="lnMessage"/>
       </item>
-      <item>
+      <item row="1" column="3">
        <widget class="QPushButton" name="btnSend">
         <property name="text">
          <string>Send</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="4">
        <widget class="QPushButton" name="btnSendFile">
         <property name="maximumSize">
          <size>
@@ -88,6 +88,27 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Desitnation:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
+       <widget class="QComboBox" name="cmbDestination">
+        <item>
+         <property name="text">
+          <string>Server</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>All</string>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -97,7 +118,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>476</width>
+     <width>363</width>
      <height>22</height>
     </rect>
    </property>
